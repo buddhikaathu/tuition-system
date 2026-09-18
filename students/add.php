@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$pageTitle = 'Add Student';
+$pageTitle = 'Add Students';
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
