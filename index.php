@@ -14,7 +14,7 @@ $params = [':month' => $month, ':year' => $year];
 if (!is_admin()) {
     $subjectFilter = ' AND e.subject = :subject';
     $params[':subject'] = $u['subject'];
-}
+
 
 // Total active students (in at least one active enrollment matching filter)
 $sql = "SELECT COUNT(DISTINCT s.id) FROM students s
