@@ -1,4 +1,4 @@
-name: PHP CI
+name: PHP CI/CD
 
 on:
   push:
@@ -10,8 +10,8 @@ on:
       - main
 
 jobs:
-  php-check:
 
+  php-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +27,28 @@ jobs:
       - name: Check PHP syntax
         run: |
           find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+
+
+  deploy:
+    needs: php-check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /htdocs/
+           exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            config.php
