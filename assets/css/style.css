@@ -1,0 +1,62 @@
+body {
+    background-color: #f4f6f9;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.stat-card {
+    border-radius: 12px;
+}
+
+.stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* ---------------- Student ID card ---------------- */
+.id-card {
+    width: 340px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.id-card .id-card-header {
+    padding: 14px 16px 6px 16px;
+    text-align: center;
+}
+.id-card .id-card-header h5 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+.id-card .id-card-body {
+    background: #fff;
+    color: #111;
+    border-radius: 12px 12px 0 0;
+    margin-top: 8px;
+    padding: 16px;
+}
+.id-card .qr-box {
+    background: #fff;
+    padding: 6px;
+    border-radius: 8px;
+    display: inline-block;
+}
+.id-card .student-code {
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.id-card .subject-tags span {
+    margin: 2px;
+}
+
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff; }
+    .id-card { box-shadow: none; border: 1px solid #ccc; }
+}
